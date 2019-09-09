@@ -9,6 +9,11 @@ namespace UsersAccount.Services
 {
     public interface IUsersServices
     {
-        Task<UserDto> ValidateUsersServices(string userName, string password);
+        Task<UserDto> ValidateUsersServices(string email, string password);
+        Task<IEnumerable<UserDto>> GetAllUsersServices(int pageNum);
+        Task<UserDto> GetByUserIdServices(int userId);
+        Task<int> UpdateByUserIdServices(UserDto userDto);
+        Task<int> InsertUserServices(UserDto userDto);
+        Task<int> DeleteByIdServices(int userId);
     }
 }

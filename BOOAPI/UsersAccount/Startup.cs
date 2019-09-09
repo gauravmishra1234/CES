@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using UsersAccount.Services;
 using AutoMapper;
-using UsersAccount.Repository;
 using UsersAccount.Helpers;
 using UsersAccount.Models;
 using System.Text;
@@ -81,8 +72,8 @@ namespace UsersAccount
             // For same json output, Donot change json output in pascalcase
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-            services.AddScoped<IUsersRepository, UsersRepository>();
-            services.AddScoped<IUsersServices,UsersServices>();
+            // For initiate service and repository
+            services.StartUpAddScoped();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

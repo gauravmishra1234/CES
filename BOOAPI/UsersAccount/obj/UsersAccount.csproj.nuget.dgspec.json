@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Ashish\\CES_Energy\\BOOAPI\\UsersAccount\\UsersAccount.csproj": {}
+    "C:\\Ashish\\CES\\CES\\BOOAPI\\UsersAccount\\UsersAccount.csproj": {}
   },
   "projects": {
-    "C:\\Ashish\\CES_Energy\\BOOAPI\\UsersAccount\\UsersAccount.csproj": {
+    "C:\\Ashish\\CES\\CES\\BOOAPI\\UsersAccount\\UsersAccount.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Ashish\\CES_Energy\\BOOAPI\\UsersAccount\\UsersAccount.csproj",
+        "projectUniqueName": "C:\\Ashish\\CES\\CES\\BOOAPI\\UsersAccount\\UsersAccount.csproj",
         "projectName": "UsersAccount",
-        "projectPath": "C:\\Ashish\\CES_Energy\\BOOAPI\\UsersAccount\\UsersAccount.csproj",
+        "projectPath": "C:\\Ashish\\CES\\CES\\BOOAPI\\UsersAccount\\UsersAccount.csproj",
         "packagesPath": "C:\\Users\\external.asahu\\.nuget\\packages\\",
-        "outputPath": "C:\\Ashish\\CES_Energy\\BOOAPI\\UsersAccount\\obj\\",
+        "outputPath": "C:\\Ashish\\CES\\CES\\BOOAPI\\UsersAccount\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

@@ -17,6 +17,7 @@ namespace UsersAccount.Dto
 
         // Extra Property only for Dto
         public string Token { get; set; }
+        //public RoleDto Role { get; set; }
         public string Role { get; set; }
     }
 }
