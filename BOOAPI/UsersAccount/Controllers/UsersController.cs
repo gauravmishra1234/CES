@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
+using MailKit.Net.Smtp;
 using UsersAccount.Dto;
 using UsersAccount.Services;
 
@@ -11,10 +14,12 @@ namespace UsersAccount.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        private IEmailSenderServices _iEmailSenderServices = null;
         private IUsersServices _iUsersServices = null;
-        public UsersController(IUsersServices iUsersServices)
+        public UsersController(IUsersServices iUsersServices, IEmailSenderServices iEmailSenderServices)
         {
             _iUsersServices = iUsersServices;
+            _iEmailSenderServices = iEmailSenderServices;
         }
 
         [HttpPost]
@@ -116,5 +121,59 @@ namespace UsersAccount.Controllers
             }
             return result;
         }
+
+        [HttpPost]
+        public async Task<ActionResult<UserDto>> ValidateEmail([FromBody] UserDto user)
+        {
+            try
+            {
+                UserDto userDto = await _iUsersServices.ValidateEmailServices(user.Email);
+                if (userDto != null)
+                {
+                    var test = _iEmailSenderServices.SendEmailAsync("gmishra@ces-ltd.com", "test", "Update account");
+                    return userDto;
+                }
+                else
+                    return BadRequest(new { message = "Email is incorrect" }); 
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+     
+        //public bool  SendEmail(string ToEmailId, string FromEmailId, string subject, string body)
+        //{
+        //    bool SendEmailStatus = true;
+        //    try
+        //    {
+               
+        //        MailMessage mail = new MailMessage();
+        //        SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+        //        mail.From = new MailAddress(FromEmailId);
+        //        mail.To.Add(ToEmailId);
+        //        mail.Subject = subject;
+        //        mail.Body = body;
+
+        //        SmtpServer.Port = 587;
+        //        SmtpServer.Credentials = new System.Net.NetworkCredential("yunusgaurav@gmail.com", "YG@12345");
+        //        SmtpServer.EnableSsl = true;
+                
+        //        SmtpServer.Send(mail);
+
+        //        //send data to table sent email log
+
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        SendEmailStatus = false;
+        //    }
+        //    return SendEmailStatus;
+        //}
+
+       
     }
 }

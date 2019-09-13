@@ -51,6 +51,10 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.3.1.6, )"
+            },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",

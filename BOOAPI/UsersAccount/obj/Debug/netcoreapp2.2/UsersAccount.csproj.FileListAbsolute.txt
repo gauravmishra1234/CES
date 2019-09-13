@@ -40,3 +40,17 @@ C:\Ashish\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.Razor
 C:\Ashish\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.dll
 C:\Ashish\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.pdb
 C:\Ashish\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.csprojAssemblyReference.cache
+C:\CES\CES\CES\BOOAPI\UsersAccount\bin\Debug\netcoreapp2.2\UsersAccount.deps.json
+C:\CES\CES\CES\BOOAPI\UsersAccount\bin\Debug\netcoreapp2.2\UsersAccount.runtimeconfig.json
+C:\CES\CES\CES\BOOAPI\UsersAccount\bin\Debug\netcoreapp2.2\UsersAccount.runtimeconfig.dev.json
+C:\CES\CES\CES\BOOAPI\UsersAccount\bin\Debug\netcoreapp2.2\UsersAccount.dll
+C:\CES\CES\CES\BOOAPI\UsersAccount\bin\Debug\netcoreapp2.2\UsersAccount.pdb
+C:\CES\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.csprojAssemblyReference.cache
+C:\CES\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.csproj.CoreCompileInputs.cache
+C:\CES\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.RazorAssemblyInfo.cache
+C:\CES\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.RazorAssemblyInfo.cs
+C:\CES\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.AssemblyInfoInputs.cache
+C:\CES\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.AssemblyInfo.cs
+C:\CES\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.RazorTargetAssemblyInfo.cache
+C:\CES\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.dll
+C:\CES\CES\CES\BOOAPI\UsersAccount\obj\Debug\netcoreapp2.2\UsersAccount.pdb

@@ -17,6 +17,8 @@ namespace UsersAccount.Helpers
 
             services.AddScoped<IRolesRepository, RolesRepository>();
             services.AddScoped<IRolesServices, RolesServices>();
+
+            services.AddScoped<IEmailSenderServices, EmailSenderServices>();
         }
     }
 }

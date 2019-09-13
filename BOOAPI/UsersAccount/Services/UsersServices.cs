@@ -146,5 +146,19 @@ namespace UsersAccount.Services
             }
             return result;
         }
+        public async Task<UserDto> ValidateEmailServices(string email)
+        {
+            try
+            {
+                User userModel = await _iUsersRepository.ValidateEmailRepository(email);
+                UserDto userDto = _mapper.Map<UserDto>(userModel);
+                userDto.Password = null;
+                return userDto;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

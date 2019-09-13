@@ -15,5 +15,6 @@ namespace UsersAccount.Services
         Task<int> UpdateByUserIdServices(UserDto userDto);
         Task<int> InsertUserServices(UserDto userDto);
         Task<int> DeleteByIdServices(int userId);
+        Task<UserDto> ValidateEmailServices(string email);
     }
 }

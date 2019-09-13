@@ -152,11 +152,24 @@ namespace UsersAccount.Repository
                 throw;
             }
         }
-        public bool IsEmailExists(string email)
+        private bool IsEmailExists(string email)
         {
             try
             {
                 bool user = _context.User.Any(x => x.Email.ToLower() == email.ToLower());
+                return user;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public async Task<User> ValidateEmailRepository(string email)
+        {
+            try
+            {
+                User user = await (from u in _context.User.Include(x => x.Role)
+                                   select u).Where(x => x.Email.ToLower() == email.ToLower()).SingleOrDefaultAsync();
                 return user;
             }
             catch (Exception)

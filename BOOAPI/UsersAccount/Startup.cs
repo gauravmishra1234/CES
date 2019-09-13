@@ -31,6 +31,9 @@ namespace UsersAccount
             // For EntityFramework core
             services.AddDbContext<BooDevContext>(item => item.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
 
+            // for Email Setting
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+
             #region for Token
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
