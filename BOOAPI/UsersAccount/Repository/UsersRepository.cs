@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UsersAccount.Dto;
 using UsersAccount.Models;
 
 namespace UsersAccount.Repository
@@ -15,12 +14,7 @@ namespace UsersAccount.Repository
         {
             _context = context;
         }
-        //public async Task<User> ValidateUsersRepository(string email, string password)
-        //{
-        //    User user = await _context.User.SingleOrDefaultAsync(x => x.Email == email && x.Password == password);
-        //    return user;
-        //}
-        public async Task<UserDto> ValidateUsersRepository(string email, string password)
+        public async Task<User> ValidateUsersRepository(string email, string password)
         {
 
             try
@@ -39,26 +33,32 @@ namespace UsersAccount.Repository
                //                          r.Role1
                //                      }).Where(x => x.Email == email).SingleOrDefaultAsync();
 
-                UserDto userDto = await (from u in _context.User
-                                         join r in _context.Role on u.RoleId equals r.RoleId
-                                         select new UserDto()
-                                         {
-                                             UserId = u.UserId,
-                                             UserName = u.UserName,
-                                             Password = u.Password,
-                                             Email = u.Email,
-                                             IsActive = u.IsActive,
-                                             CreatedDate = u.CreatedDate,
-                                             RoleId = u.RoleId,
-                                             Role = r.Role1
-                                         }).Where(x => x.Email == email && x.Password == password).SingleOrDefaultAsync();
+                //UserDto userDto = await (from u in _context.User
+                //                         join r in _context.Role on u.RoleId equals r.RoleId
+                //                         select new UserDto()
+                //                         {
+                //                             UserId = u.UserId,
+                //                             UserName = u.UserName,
+                //                             Password = u.Password,
+                //                             Email = u.Email,
+                //                             IsActive = u.IsActive,
+                //                             CreatedDate = u.CreatedDate,
+                //                             RoleId = u.RoleId,
+                //                             Role = r.Role1
+                //                         }).Where(x => x.Email == email && x.Password == password).SingleOrDefaultAsync();
 
 
                 //User user = await _context.User.SingleOrDefaultAsync(x => x.Email == email && x.Password == password);
+                //var test = from u in _context.User.Include(x => x.Role)
+                //           select u;
+                User user = new User();
+                if (IsEmailExists(email))
+                {
+                    user = await (from u in _context.User.Include(x => x.Role)
+                                  select u).Where(x => x.Email.ToLower() == email.ToLower() && x.Password == password && x.IsActive == true).SingleOrDefaultAsync();
+                }
 
-                //User user = await (from u in _context.User.Include(x => x.Role)
-                //                   select u).Where(x => x.Email == email && x.Password == password).SingleOrDefaultAsync();
-                return userDto;
+                return user;
             }
             catch (Exception)
             {
@@ -146,6 +146,18 @@ namespace UsersAccount.Repository
                     isExists = _context.User.Any(e => e.UserId == id);
                 }
                 return isExists;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public bool IsEmailExists(string email)
+        {
+            try
+            {
+                bool user = _context.User.Any(x => x.Email.ToLower() == email.ToLower());
+                return user;
             }
             catch (Exception)
             {

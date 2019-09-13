@@ -29,8 +29,20 @@ namespace UsersAccount.Services
         {
             try
             {
-                UserDto userDto = await _iUsersRepository.ValidateUsersRepository(email, password);
-                //UserDto userDto = _mapper.Map<UserDto>(userModel);
+                string encrypted = string.Empty;
+                string encryptkey = _appSettings.EncryptAndDecryptKey;
+                if (!string.IsNullOrEmpty(password))
+                {
+                    encrypted = EncryptAndDecrypt.Encrypt(password, encryptkey);
+                    password = encrypted;
+                }
+
+                User userModel = await _iUsersRepository.ValidateUsersRepository(email, password);
+                UserDto userDto = _mapper.Map<UserDto>(userModel);
+
+                if (userModel.Role != null && !(string.IsNullOrEmpty(userModel.Role.Role1)))
+                    userDto.Role = userModel.Role.Role1;
+
                 // return null if user not found
                 if (userDto == null)
                     return null;
@@ -105,6 +117,13 @@ namespace UsersAccount.Services
             int result = 0;
             try
             {
+                string encrypted = string.Empty;
+                string key = _appSettings.EncryptAndDecryptKey;
+                if (!string.IsNullOrEmpty(userDto.Password))
+                {
+                    encrypted = EncryptAndDecrypt.Encrypt(userDto.Password, key);
+                    userDto.Password = encrypted;
+                }
                 User user = _mapper.Map<User>(userDto);
                 result = await _iUsersRepository.InsertUserRepository(user);
             }

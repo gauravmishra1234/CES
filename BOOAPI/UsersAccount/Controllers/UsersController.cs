@@ -25,6 +25,7 @@ namespace UsersAccount.Controllers
                 UserDto userDto = await _iUsersServices.ValidateUsersServices(user.Email, user.Password);
                 if (userDto == null)
                     return BadRequest(new { message = "Username or password is incorrect" });
+
                 return userDto;
             }
             catch (Exception ex)
